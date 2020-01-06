@@ -18,7 +18,6 @@ n = 10    # intervals
 a = 2    # Choosing an arbitrary value of a and b
 b = 7
 h = (b-a)/n    # interval length
-x = a    # setting the starting value of x
 
-comp_list = [x + i*h for i in range(n+1)]
+comp_list = [a + i*h for i in range(n+1)]
 print(comp_list)
