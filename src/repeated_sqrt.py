@@ -33,7 +33,7 @@ squaring the same number of times.
 
 
 from math import sqrt
-for n in range(52, 53):
+for n in range(1, 60):
     r = 2.0
     for i in range(n):
         r = sqrt(r)
