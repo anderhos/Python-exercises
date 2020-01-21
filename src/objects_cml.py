@@ -16,9 +16,9 @@ Exercise 4.7: Read input from the command line
 """
 import sys
 
-eval = eval(sys.argv[1])
-print(type(eval))
-print(eval)
+input_value = sys.argv[1]
+result = eval(input_value)
+print(result, type(result))
 
 """
 When inputing "This is a string" Python interprets This is a string as code.
