@@ -23,16 +23,12 @@ from math import ceil
 #a0 = 4
 N = 100
 index_set = range(0, N+1)
-print(index_set)
 a = zeros(len(index_set))
-print(len(index_set))
-print(len(a))
 
 #a[0] = a0
-for n in index_set[0:N+1:2]:
+for n in index_set[0:N+1]:
     a[n] = (7 + 1 / (n + 1)) / (3 - 1/(n + 1)**2)
 
-print(a)
 
 """
 Comment:
@@ -41,5 +37,27 @@ of the excact limit 8/3 when n goes to infinity
 
 """
 
+
 # ex (b)
 
+# Defining function
+
+def Dn(N):
+    result = zeros(N+1)
+    for n in range(N+1):
+        result[n] = sin(2**(-n)) / 2**(-n)
+    return result
+
+# Computing for large N
+
+a = Dn(100)    # 101 elements
+
+
+# ex (c)
+
+def D(f, x, N):
+    res = zeros(N+1)
+    for n in range(N+1):
+        h = 2**(-n)
+        res[n] = (f(x+h) - f(x)) / h
+    return res
