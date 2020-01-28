@@ -22,15 +22,15 @@ from math import ceil
 
 #a0 = 4
 N = 100
-index_set = range(0, N+2)
+index_set = range(0, N+1)
 print(index_set)
 a = zeros(len(index_set))
 print(len(index_set))
 print(len(a))
 
 #a[0] = a0
-for n in index_set[0:N+2:2]:
-    a[n] = (7 + 1 / (n + 1)) / 3 - 1/(n + 1)**2
+for n in index_set[0:N+1:2]:
+    a[n] = (7 + 1 / (n + 1)) / (3 - 1/(n + 1)**2)
 
 print(a)
 

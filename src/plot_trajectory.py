@@ -16,15 +16,12 @@ Exercise 5.13: Plot the trajectory of a ball
 """
 
 import matplotlib.pyplot as plt
-from numpy import *
+import numpy as np
 import sys
+from math import cos, tan, sqrt
 
 g = 9.81
-n = 51
-
-def f(x):
-    return x * tan(theta) - 1/(2 * v0**2) * (g * x**2)/cos(theta)**2 + y0
-
+n = 101
 
 y0 = sys.argv[1]
 y0 = float(y0)
@@ -33,27 +30,23 @@ theta = float(theta)
 v0 = sys.argv[3]
 v0 = float(v0)
 
-x = linspace(0, 10, n)
-
-plt.plot(x, f(x))
-plt.xlabel('x')
-plt.ylabel('y')
-plt.show()
-
+"""
+To plot the graph we need to solve the quadratic function 
+y = f(x) = a*x**2 + b*x + c for f(x) > 0.
+We must find the max root. Because the min root is negative in our case.
 """
 
-for y0 in sys.argv[1]:
-    for theta in sys.argv[2]:
-        for v0 in sys.argv[3:]:
-            y0 = float(y0)
-            theta = float(theta)
-            v0 = float(v0)
-            x = linspace(0, 10, n)
-            y = f(x)
-            plt.plot(x, y)
+a = -1.0/(2*v0**2)*g/(cos(theta)**2)
+b = tan(theta)
+c = y0
 
+roots = np.roots([a, b, c])
+x_max = max(roots)
+x = np.linspace(0, x_max, n)
+y = a*x**2 + b*x + c
+
+plt.plot(x, y)
 plt.xlabel('x')
 plt.ylabel('y')
+plt.savefig('plot_trajectory.pdf')
 plt.show()
-
-"""
