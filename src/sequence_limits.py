@@ -17,6 +17,7 @@ Exercise A.1: Determine the limit of a sequence
 
 from numpy import *
 from math import ceil
+import matplotlib.pyplot as plt
 
 # ex (a)
 
@@ -61,3 +62,16 @@ def D(f, x, N):
         h = 2**(-n)
         res[n] = (f(x+h) - f(x)) / h
     return res
+
+if __name__ == "__main__":
+    f = sin
+    x = 0
+    N = 80
+    d = D(f, x, N)
+    plt.figure()
+    plt.plot(arange(0,N+1), d, 'o')
+    plt.show()
+
+
+# What are you suppose to plot. D and x, or D f(x) or f(x) and x
+# What is small circles as datapoints?
