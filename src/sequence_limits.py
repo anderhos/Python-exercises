@@ -65,13 +65,19 @@ def D(f, x, N):
 
 if __name__ == "__main__":
     f = sin
-    x = 0
     N = 80
-    d = D(f, x, N)
-    plt.figure()
-    plt.plot(arange(0,N+1), d, 'o')
-    plt.show()
+    for x in [0, pi]:
+        d = D(f, x, N)
+        plt.figure()
+        plt.plot(arange(0,N+1), d, 'o')
+        plt.xlabel('N')
+        plt.ylabel('D')
+        plt.show()
+    # ex (d)
 
+# Expect the limit to be cos(pi) = -1
+"""
 
-# What are you suppose to plot. D and x, or D f(x) or f(x) and x
-# What is small circles as datapoints?
+ed (e): To many digits gives us a round of error. The numerator becomes zero
+for large values of N
+"""
