@@ -15,6 +15,7 @@ Exercise A.4: Compute the development of a loan
 
 """
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def g(N, L, p):
@@ -29,8 +30,8 @@ def g(N, L, p):
         y: what to pay each month
         x: the current value of the loan
     """
-    y = np.zeros(N + 1)
-    x = np.zeros(N + 1)
+    y = np.zeros(N+1)
+    x = np.zeros(N+1)
     x[0] = L
     for n in range(1, N+1):
         y[n] = p/(12*100) * x[n-1] + L/N
@@ -38,5 +39,15 @@ def g(N, L, p):
     return x, y
 
 if __name__ == "__main__":
-    output = g(120, 10**6, 5)
-    print(output)
+    N = 120
+    output = g(N, 10**6, 5)
+    plt.figure()
+    plt.plot(np.arange(0, N+1), output[0], 'r')
+    plt.xlabel('N')
+    plt.ylabel('Loan')
+    plt.show()
+    plt.figure()
+    plt.plot(np.arange(0, N+1), output[1], 'r')
+    plt.xlabel('N')
+    plt.ylabel('Downpayment')
+    plt.show()
