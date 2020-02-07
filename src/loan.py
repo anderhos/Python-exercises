@@ -16,6 +16,7 @@ Exercise A.4: Compute the development of a loan
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import decimal
 
 
 def g(N, L, p):
@@ -34,20 +35,24 @@ def g(N, L, p):
     x = np.zeros(N+1)
     x[0] = L
     for n in range(1, N+1):
-        y[n] = p/(12*100) * x[n-1] + L/N
-        x[n] = x[n-1] + p/(12*100) * x[n-1] - y[n]
+        y[n] = float(p)/(12*100) * x[n-1] + float(L)/N
+        x[n] = x[n-1] + float(p)/(12*100) * x[n-1] - y[n]
     return x, y
 
 if __name__ == "__main__":
     N = 120
-    output = g(N, 10**6, 5)
+    x, y = g(N, 10**6, 5)
+    print("Month    Payment    Loan after month")
+    for i in range(N+1):
+        precision = 4
+        print(f"{i}       {y[i]}       {x[i]}")
     plt.figure()
-    plt.plot(np.arange(0, N+1), output[0], 'r')
+    plt.plot(np.arange(0, N+1), x, 'r')
     plt.xlabel('N')
     plt.ylabel('Loan')
     plt.show()
     plt.figure()
-    plt.plot(np.arange(0, N+1), output[1], 'r')
+    plt.plot(np.arange(0, N+1), y, 'r')
     plt.xlabel('N')
     plt.ylabel('Downpayment')
     plt.show()
