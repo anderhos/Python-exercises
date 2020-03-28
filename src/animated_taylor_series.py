@@ -19,16 +19,21 @@ import numpy as np
 
 #np.linspace
 def fk(x):
-    return x**k / factorial(k, exact)
+    return x**k / factorial(k)
 M = 0
 N = 10
-xmin =0
+xmin = 0
 xmax = 3
 ymin = 0
 ymax = 30
 n = 100
 exact = np.exp(x)
 
-animate_series(fk, M, N, xmin, xmax, ymin, ymax, n, exact)
+def animate_series(fk, M, N, xmin, xmax, ymin, ymax, n, exact):
+    output = 0
+    for k in range(N+1):
+        new_output = fk(x) + output
+        output = new_output
+        print(output)
 
 # Sjekk lecture notes for framgangsmåte.
