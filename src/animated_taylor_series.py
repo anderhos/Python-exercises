@@ -15,6 +15,7 @@ Exercise 5.39: Animate the evolution of Taylor polynomials
 """
 
 from scipy.special import factorial
+import matplotlib.pyplot as plt
 import numpy as np
 
 #np.linspace
@@ -29,12 +30,12 @@ ymax = 30
 # How should y relate to fk? Or is it just defining axis?
 exact = np.exp(x)
 
-def fk(x):
+def fk(x, k):
     """
     Defining the function for the terms
     """
-    return x**k / factorial(k)
-
+    for k in range(N+1):
+        fk = x**k / factorial(k)
 
 
 def animate_series(fk, M, N, xmin, xmax, ymin, ymax, n, exact):
@@ -42,8 +43,11 @@ def animate_series(fk, M, N, xmin, xmax, ymin, ymax, n, exact):
     The function to be plotted as a movie
     """
     output = 0
-    for _ in range(N+1):    # Accumulating the terms
-        new_output = fk(x) + output
+    fk = np.zeros(N+1)
+    for k in range(N+1):
+        fk = x**k /factorial(k)
+    for k in range(N+1):    # Accumulating the terms
+        new_output = fk + output
         output = new_output
         print(output)
     return output
