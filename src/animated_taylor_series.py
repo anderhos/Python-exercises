@@ -14,11 +14,6 @@ Exercise 5.39: Animate the evolution of Taylor polynomials
 
 """
 
-"""
-Mye som må gjøres om. Forsøk å løse det med tall først
-uten plotting.
-"""
-
 from scipy.special import factorial
 import matplotlib.pyplot as plt
 import numpy as np
@@ -34,14 +29,25 @@ def fk(x, k):
     """
     return x**k / factorial(k)
 
+# limits
+M = 0
+N = 10
+# steps
+n = 11
+x = 1
+k_min = M
 
-# testing function and summation
-for x in range(0, 3):
-    exact = np.exp(x)  # The exact value we want to estimate
-    old_value = 0  # Initial value of summation before adding any terms
-    for k in range(0,10):
-        new_value = old_value + fk(x, k)
-        # Storing the new value now old for next iteration
-        old_value = new_value
-        print("Value of x: %d Number of terms: %d Sum = %f Exact value = %f"
-              % (x, k+1, old_value, exact))
+k_values = np.linspace(M, N, n)
+
+# first plot
+
+old_value = 0
+exact = np.exp(x)
+for k in k_values:
+    new_value = old_value + fk(x, k)
+    # Storing the new value now old for next iteration
+    old_value = new_value
+    #print("Value of x: %d Number of terms: %d Sum = %f Exact value = %f"
+     #     % (x, k+1, old_value, exact))
+
+# Plot the approximation
