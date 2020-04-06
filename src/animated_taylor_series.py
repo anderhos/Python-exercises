@@ -34,38 +34,14 @@ def fk(x, k):
     """
     return x**k / factorial(k)
 
-M = 0
-N = 10
-k = np.linspace(M, N, N+1)
-xmin = 0
-xmax = 3
-n = 20
-x = np.linspace(xmin, xmax, n)
 
-max_fk = fk(xmax, N)
-k_values = np.linspace(M, N, N+1)
-
-x = np.linspace(xmin, xmax, n)    # Correct?
-exact = np.exp(x)
-
-# plotting the exact function, and making static axes
-plt.plot(x, exact)
-plt.ion()
-y = fk(x, k=N)
-lines = plt.plot(x, y)
-plt.axis([xmin, xmax, -0.2, max_fk])
-plt.xlabel('x')
-plt.ylabel('fk')
-plt.legend(['k=%4.2f' % M])
-
-# Show movie, and make hardcopies simultanously
-counter = 0
-for k in k_values:
-    y = fk(x, k)
-    lines[0].set_ydata(y)
-    plt.legend(['k=%4.2f' % k])
-    plt.draw()
-    plt.savefig('tmp_%04d.png' % counter)
-    counter += 1
-input('Type Return key: ')
-# Sjekk lecture notes for framgangsmåte!
+# testing function and summation
+for x in range(0, 3):
+    exact = np.exp(x)  # The exact value we want to estimate
+    old_value = 0  # Initial value of summation before adding any terms
+    for k in range(0,10):
+        new_value = old_value + fk(x, k)
+        # Storing the new value now old for next iteration
+        old_value = new_value
+        print("Value of x: %d Number of terms: %d Sum = %f Exact value = %f"
+              % (x, k+1, old_value, exact))
