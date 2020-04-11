@@ -28,10 +28,9 @@ stop = 4
 dx = 1/(n-1)
 
 x = np.linspace(start, stop, n)
-y = np.zeros(41)
 
 # fill array y with function values
+y = h(x)
 
 
-print(x)
 print(y)
