@@ -14,40 +14,33 @@ Exercise 5.39: Animate the evolution of Taylor polynomials
 
 """
 
+"""
+Only returning numbers. No animation yet!
+"""
+
 from scipy.special import factorial
+import matplotlib.pyplot as plt
 import numpy as np
+import glob, os
 
-#np.linspace
-M = 0
-N = 10
-xmin = 0
-xmax = 3
-n = 20
-x = np.linspace(xmin, xmax, n)    # Correct?
-ymin = 0
-ymax = 30
-# How should y relate to fk? Or is it just defining axis?
-exact = np.exp(x)
+# Clean up old frames
+for name in glob.glob('tmp_*.png'):
+    os.remove(name)
 
-def fk(x):
+def fk(x, k):
     """
     Defining the function for the terms
     """
     return x**k / factorial(k)
 
 
-
-def animate_series(fk, M, N, xmin, xmax, ymin, ymax, n, exact):
-    """
-    The function to be plotted as a movie
-    """
-    output = 0
-    for _ in range(N+1):    # Accumulating the terms
-        new_output = fk(x) + output
-        output = new_output
-        print(output)
-    return output
-
-# Need to combine the two functions?
-
-# Sjekk lecture notes for framgangsmåte!
+# testing function and summation
+for x in range(0, 3):
+    exact = np.exp(x)  # The exact value we want to estimate
+    old_value = 0  # Initial value of summation before adding any terms
+    for k in range(0,10):
+        new_value = old_value + fk(x, k)
+        # Storing the new value now old for next iteration
+        old_value = new_value
+        print("Value of x: %d Number of terms: %d Sum = %f Exact value = %f"
+              % (x, k+1, old_value, exact))
