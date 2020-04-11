@@ -15,8 +15,7 @@ Exercise 5.39: Animate the evolution of Taylor polynomials
 """
 
 """
-Mye som må gjøres om. Forsøk å løse det med tall først
-uten plotting.
+Only returning numbers. No animation yet!
 """
 
 from scipy.special import factorial
