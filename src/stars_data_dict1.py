@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+        # -*- coding: utf-8 -*-
 
 __author__ = 'Anders Mølmen Høst'
 __email__ = 'anderhos@nmbu.no'
@@ -16,29 +16,27 @@ Exercise 6.5: Make a dictionary
 
 """
 Making a dictionary with the names of stars and their luminosity
-stars in first column in file and luminosity in third column
+stars in first column in file and luminosity in fourth column
 
 """
 
 """
-File not working as i should. Only first name of star and returns
+File not working as it should. Only first name of star and returns
 a list within a dictionary it seems
 """
 
+"""
+Try new implementation. Remove 2 columns, second last and third last
+"""
 
+"""
+A list of four tuples, not a table as in density.py
+"""
 def read_stars(filename):
     infile = open(filename, "r")
-    luminosities = {}
-    for line in infile:
-        words = line.split()
-        luminosity = words[-1]
-        # Need fix, include all the words in the star.
-        # Check density.py
-        star = words[0]
-        luminosities[star] = luminosity
+    lines = [line for line in infile]
     infile.close()
-    return luminosities
+    return lines
 
+print(read_stars("stars.txt"))
 
-luminosities_dict = read_stars("stars.txt")
-print(luminosities_dict)
