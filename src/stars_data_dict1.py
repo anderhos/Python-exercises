@@ -30,38 +30,25 @@ Remember: In the file we have a list of four tuples, not a table as in
 e.g density.py
 """
 
+"""
+Try to read the whole file into one string. Combining the four-tuples
+
+
+"""
+
 
 def read_stars(filename):
 
     infile = open(filename, "r")
     # skipping first line
     infile.readline()
-    luminosities = {}
-    for line in infile:
-        words = line.split()
-        # luminosity is the last word in line
-        luminosity = words[-1]
-        # type luminosity is a string
-        # Need to remove characters ), so we can convert to float
-        # removing the three last words to get star name
-        if len(words[:-3]) == 4:
-            star = words[0] + ' ' + words[1] + ' ' + words[2] + ' ' + words[3]
-        elif len(words[:-3]) == 3:
-            star = words[0] + ' ' + words[1] + ' ' + words[2]
-        elif len(words[:-3]) == 2:
-            star = words[0] + ' ' + words[1]
-        else:
-            star = words[0]
-        # type star is a string but has extra character ( in the beginning
-        # of every name
-
-        luminosities[star] = luminosity
-    infile.close()
-    return luminosities
+    filestr = infile.read()
+    return filestr
 
 
 output = read_stars("stars.txt")
 print(output)
+print(type(output))
 """
 keys and values are correct but with extra characters around as mentioned
 """
