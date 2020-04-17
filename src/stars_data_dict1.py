@@ -19,36 +19,25 @@ Making a dictionary with the names of stars and their luminosity
 stars in first column in file and luminosity in fourth column
 
 """
-
-"""
-File not working as it should. Get a dictionary, but keys and values are
-not as they should be.
-"""
+# Load the file into a list of lines
+with open('stars.txt', 'r') as infile:
+    text = infile.read()
+# Stripping off characters
+text = text.strip('data = ')
+data = eval(text)
+print(data)
+print(type(data))
 
 """
 Remember: In the file we have a list of four tuples, not a table as in
 e.g density.py
 """
 
-"""
-Try to read the whole file into one string. Combining the four-tuples
 
 
-"""
 
 
-def read_stars(filename):
-
-    infile = open(filename, "r")
-    # skipping first line
-    infile.readline()
-    filestr = infile.read()
-    return filestr
-
-
-output = read_stars("stars.txt")
-print(output)
-print(type(output))
-"""
-keys and values are correct but with extra characters around as mentioned
-"""
+# Also have a look on the other branch
+# have a closer look on stack overflow links
+# also a look on standard library tutorial
+# link https://docs.python.org/3.8/tutorial/datastructures.html#dictionaries
