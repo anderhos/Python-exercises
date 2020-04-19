@@ -16,29 +16,28 @@ Exercise 6.5: Make a dictionary
 
 """
 Making a dictionary with the names of stars and their luminosity
-stars in first column in file and luminosity in third column
+stars in first column in file and luminosity in fourth column
 
 """
+# Load the file into a list of lines
+with open('stars.txt', 'r') as infile:
+    text = infile.read()
 
-"""
-File not working as i should. Only first name of star and returns
-a list within a dictionary it seems
-"""
+# Stripping off characters
+text = text.strip('data = ')
+# have a list of tuples
+data = eval(text)
+# making a list of lists instead of list of tuples
 
+input_list = []
+for i in data:
+    input_list.append(list(i))
 
-def read_stars(filename):
-    infile = open(filename, "r")
-    luminosities = {}
-    for line in infile:
-        words = line.split()
-        luminosity = words[-1]
-        # Need fix, include all the words in the star.
-        # Check density.py
-        star = words[0]
-        luminosities[star] = luminosity
-    infile.close()
-    return luminosities
+# delete not needed items
+for j in input_list:
+    del j[1:3]
 
-
-luminosities_dict = read_stars("stars.txt")
-print(luminosities_dict)
+# convert to dictionary
+stars_dict = dict(input_list)
+print(stars_dict)
+print(stars_dict['Alpha Centauri A'])
