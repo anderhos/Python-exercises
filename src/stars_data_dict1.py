@@ -27,21 +27,17 @@ with open('stars.txt', 'r') as infile:
 text = text.strip('data = ')
 # have a list of tuples
 data = eval(text)
+# making a list of lists instead of list of tuples
 
+input_list = []
+for i in data:
+    input_list.append(list(i))
 
-print(data)
-print(type(data))
+# delete not needed items
+for j in input_list:
+    del j[1:3]
 
-"""
-Remember: In the file we have a list of four tuples, not a table as in
-e.g density.py
-"""
-
-
-
-
-
-# Also have a look on the other branch
-# have a closer look on stack overflow links
-# also a look on standard library tutorial
-# link https://docs.python.org/3.8/tutorial/datastructures.html#dictionaries
+# convert to dictionary
+stars_dict = dict(input_list)
+print(stars_dict)
+print(stars_dict['Alpha Centauri A'])
