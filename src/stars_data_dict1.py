@@ -19,25 +19,16 @@ Making a dictionary with the names of stars and their luminosity
 stars in first column in file and luminosity in fourth column
 
 """
-# Load the file into a list of lines
+# Load the file. Execute the text as code
 with open('stars.txt', 'r') as infile:
-    text = infile.read()
+    exec(infile.read())
+# Now data is a list of tuples
 
-# Stripping off characters
-text = text.strip('data = ')
-# have a list of tuples
-data = eval(text)
-# making a list of lists instead of list of tuples
-
-input_list = []
+#creating empty dictionary
+stars_dict = {}
+# assigning star to key and lumiosity to value
 for i in data:
-    input_list.append(list(i))
+    stars_dict[i[0]] = i[-1]
 
-# delete not needed items
-for j in input_list:
-    del j[1:3]
-
-# convert to dictionary
-stars_dict = dict(input_list)
 print(stars_dict)
 print(stars_dict['Alpha Centauri A'])
