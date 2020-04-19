@@ -22,9 +22,13 @@ stars in first column in file and luminosity in fourth column
 # Load the file into a list of lines
 with open('stars.txt', 'r') as infile:
     text = infile.read()
+
 # Stripping off characters
 text = text.strip('data = ')
+# have a list of tuples
 data = eval(text)
+
+
 print(data)
 print(type(data))
 
