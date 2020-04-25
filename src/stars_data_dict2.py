@@ -29,13 +29,14 @@ data = [
 ]
 
 #creating empty dictionary
-stars_dict = {}
+star_dict = {}
 # assigning star to first key and distance, apparant brightness and
 # luminosity to second key
 
-for i in data:
-    stars_dict[i[0]] = i[1:4]
+for star in data:
+    star_dict[star[0]] = {'distance': star[1],
+                          'apparent brightness': star[2],
+                          'luminosity': star[3]}
 
-print(stars_dict['Alpha Centauri A'])
 
-# Not finished. read in the book.
+print(star_dict['Alpha Centauri A']['distance'])
