@@ -16,46 +16,38 @@ Exercise 6.7: Make a nested dictionary from a file
 
 
 infile = open("human_evolution.txt", "r")
-# Skip first three lines
-for line in range(3):
-    infile.readline()
 
+# column number limits from file
 hu_start = 0
 w_start = 21
 he_start = 37
 m_start = 50
-b_start = 62
-end = 88
-extra = 89
+b_start = 61
+end = 89
 
-list_human = []
+# empty dictionary
+human_dict = {}
 for line in infile:
-    humans = line[hu_start:w_start].strip()
-    when = line[w_start:he_start].strip()
-    height = line[he_start:m_start].strip()
-    mass = line[m_start:b_start].strip()
-    brain = line[b_start:end].strip()
-    #print("debug: humans= '%s', weight= '%s', height='%s' , mass='%s' , brain='%s'" %
+    # Since every human spcies starts with H in file
+    if line[0] == 'H':
+        # Strip of leading and trailing spaces
+        # making sub-dictionaries
+        human = line[hu_start:w_start].strip()
+        when = line[w_start:he_start].strip()
+        height = line[he_start:m_start].strip()
+        mass = line[m_start:b_start].strip()
+        brain = line[b_start:end].strip()
+    # print("debug: humans= '%s', weight= '%s', height='%s' , mass='%s' , brain='%s'" %
           #(humans, when, height, mass, brain))
-    list_human.append((humans, when, height, mass, brain))
-    del(list_human[7:])
+        human_dict[human] = {'when': when,
+                             'height': height,
+                             'mass': mass,
+                             'brain': brain}
+
 
 infile.close()
-
-human_dict = {}
-
-for human in list_human:
-    human_dict[human[0]] = {'when': human[1],
-                            'height': human[2],
-                            'mass': human[3],
-                            'brain': human[4]}
-
-print(human_dict)
-
-# printe kolonne 22 osv
-
-for i in list_human:
-    print(i[0], i[1], i[2], i[3], i[4])
-
-
-#print(list_human[0][0], list_human[0][1], list_human[0][2], list_human[0][3])
+# output
+# : number of characters for each column
+for human in human_dict:
+    print(f"{human:20} {human_dict[human]['when']:15} {human_dict[human]['height']:11} {human_dict[human]['mass']:10} "
+          f"{human_dict[human]['brain']}")
