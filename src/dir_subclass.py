@@ -37,9 +37,6 @@ class Line:
             s += '%12g %12g\n' % (x, y)
         return s
 
-    def dump(self):
-        print(self.__dict__)
-
 class Parabola0(Line):
     pass
 
@@ -49,6 +46,6 @@ p = Parabola0(1, 3)
 
 print(dir(p))
 print(dir(l))
-print(l.dump())
-print(p.dump())
+print(l.__dict__)
+print(p.__dict__)
 
