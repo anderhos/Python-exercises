@@ -50,4 +50,30 @@ class Polynomial:
                 result_coeff[i] += self.coeff
         return Polynomial(result_coeff)
 
+class Parabola(Polynomial):
+    """
+    Inherit coefficients from Polynomial. Set extra coefficients to zero
+    """
+    def __init__(self, c0, c1, c2):
+        super().__init__(coefficients=[c0, c1, c2])
+
+
+    def __call__(self, x):
+        """Evaluate parabola"""
+        return super().__call__(x)
+
+    def __add__(self, other):
+        if len(self.coeff) == 3:
+            result_coeff = self.coeff[:]
+        else:
+            result_coeff = self.coeff[:]
+            for i in range(len(self.coeff)):
+                result_coeff[i] += self.coeff
+
+class Line(Parabola):
+    def __init__(self, c0, c1, c2=0):
+        super().__init__(c0, c1, c2)
+
+
+
 
