@@ -108,11 +108,12 @@ Polynomial base class.
 
 class Parabola(Polynomial):
     def __init__(self, c0, c1, c2):
-        self.coeff = [c0, c1, c2]
+        super().__init__(coefficients=[c0, c1, c2])
+
 
 class Line(Polynomial):
     def __init__(self, c0, c1):
-        self.coeff = [c0, c1]
+        super().__init__(coefficients=[c0, c1])
 
 """
 Example usage: Parabola and Line support pretty print
@@ -129,4 +130,7 @@ print(l0)
 p1 = l0 + p0
 print(p1)
 
-
+"""
+Comment AH: Look over soulution one more time to understand better what is
+going on.
+"""
