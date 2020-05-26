@@ -57,23 +57,21 @@ class Parabola(Polynomial):
     def __init__(self, c0, c1, c2):
         super().__init__(coefficients=[c0, c1, c2])
 
-
     def __call__(self, x):
         """Evaluate parabola"""
-        return super().__call__(x)
-
-    def __add__(self, other):
-        if len(self.coeff) == 3:
-            result_coeff = self.coeff[:]
-        else:
-            result_coeff = self.coeff[:]
-            for i in range(len(self.coeff)):
-                result_coeff[i] += self.coeff
+        return self.coeff[0] + self.coeff[1] * x + self.coeff[2] * x**2
 
 class Line(Parabola):
     def __init__(self, c0, c1, c2=0):
         super().__init__(c0, c1, c2)
 
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in np.linspace(L, R, n):
+            y = self(x)
+            s += '%12g %12g\n' % (x, y)
+        return s
 
 
 
