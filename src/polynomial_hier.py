@@ -130,7 +130,6 @@ print(l0)
 p1 = l0 + p0
 print(p1)
 
-"""
-Comment AH: Look over soulution one more time to understand better what is
-going on.
-"""
+p2 = l0 - p0
+print(p2)
+print(p2(x=1))
