@@ -67,7 +67,7 @@ class Polynomial:
         # start with the simplest case where self.coeff is longest
         if len(self.coeff) > len(other.coeff):
             result_coeff = self.coeff[:]    # copy
-            for i in range(len(other_coeff)):
+            for i in range(len(other.coeff)):
                 result_coeff[i] -= other.coeff[i]
         else:
             # Here, the polynomial we subtract is the
