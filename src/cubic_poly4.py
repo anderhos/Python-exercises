@@ -23,7 +23,7 @@ class Cubic(Parabola):
         self.c3 = c3
 
     def __call__(self, x):
-        print(super().__call__(x) + self.c3 * x**3)
+        print("Call Cubic: ", super().__call__(x) + self.c3 * x**3)
         return super().__call__(x) + self.c3 * x**3
 
 
@@ -33,6 +33,14 @@ class Poly4(Cubic):
         self.c4 = c4
 
     def __call__(self, x):
-        print(super().__call__(x) + self.c4 * x**4)
+        print("Call Ploly4: ", super().__call__(x) + self.c4 * x**4)
         return super().__call__(x) + self.c4 * x**4
 
+
+f = Cubic(1, 2, 3, 4)
+f1 = f(x=2.5)
+print("f1 = ", f1)
+
+g = Poly4(1, 2, 3, 4, 5)
+g2 = g(x=2.5)
+print("g2 = ", g2)
