@@ -40,7 +40,9 @@ class Poly4(Cubic):
 f = Cubic(1, 2, 3, 4)
 f1 = f(x=2.5)
 print("f1 = ", f1)
+# print("f_table = ", f.table(0, 5, 11))
 
 g = Poly4(1, 2, 3, 4, 5)
 g2 = g(x=2.5)
 print("g2 = ", g2)
+# print("g_table = ", g.table(0, 5, 11))
