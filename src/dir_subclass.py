@@ -14,6 +14,7 @@ Exercise 9.1: Demonstrate the magic of inheritance
 
 """
 
+import numpy as np
 
 class Line:
 
@@ -31,7 +32,6 @@ class Line:
     def table(self, L, R, n):
         """Return a table with n points for L <= x <= R."""
         s = ''
-        import numpy as np
         for x in np.linspace(L, R, n):
             y = self(x)
             s += '%12g %12g\n' % (x, y)
@@ -44,8 +44,8 @@ class Parabola0(Line):
 l = Line(1, 3)
 p = Parabola0(1, 3)
 
-print(dir(p))
-print(dir(l))
-print(l.__dict__)
-print(p.__dict__)
+#print(dir(p))
+#print(dir(l))
+#print(l.__dict__)
+#print(p.__dict__)
 
