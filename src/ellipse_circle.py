@@ -35,3 +35,9 @@ class Ellipse:
         """
         pass
 
+
+class Circle(Ellipse):
+    def __init__(self, semi_major, semi_minor, t, w):
+        super().__init__(semi_major, semi_minor, t, w)
+        semi_major = semi_minor
+        self.radius = semi_major
