@@ -19,11 +19,9 @@ import numpy as np
 
 
 class Ellipse:
-    def __init__(self, semi_major, semi_minor, t, w):
+    def __init__(self, semi_major, semi_minor):
         self.semi_major = semi_major
         self.semi_minor = semi_minor
-        self.t = t
-        self.w = w
 
     def area(self):
         return np.pi * self.semi_major * self.semi_minor
@@ -37,7 +35,13 @@ class Ellipse:
 
 
 class Circle(Ellipse):
-    def __init__(self, semi_major, semi_minor, t, w):
-        super().__init__(semi_major, semi_minor, t, w)
-        semi_major = semi_minor
-        self.radius = semi_major
+    def __init__(self, semi_major):
+        semi_minor = semi_major
+        self.radius = semi_minor
+        super().__init__(semi_major, semi_minor)
+
+
+my_ellipse = Ellipse(4, 3)
+print(my_ellipse.area())
+my_circle = Circle(4)
+print(my_circle.area())
