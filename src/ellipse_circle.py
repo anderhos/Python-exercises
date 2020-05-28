@@ -13,32 +13,35 @@ Year: 2016
 Exercise 9.5: Make circle a subclass of an ellipse
 
 """
-# t: time for one complete orbit
-# w: angular velocity
 import numpy as np
 
 
+# semi_major = a
+# semi_minor = b
+
 class Ellipse:
-    def __init__(self, semi_major, semi_minor):
-        self.semi_major = semi_major
-        self.semi_minor = semi_minor
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
 
     def area(self):
-        return np.pi * self.semi_major * self.semi_minor
+        return np.pi * self.a * self.b
 
     def circumference(self):
         """
-        Not implemented
+        Formula
         see: https://en.wikipedia.org/wiki/Ellipse#Circumference
         """
-        pass
+        return np.pi * (3 * (self.a + self.b) -
+                        np.sqrt(10 * self.a * self.b) +
+                        3 * (self.a ** 2 + self.b ** 2))
 
 
 class Circle(Ellipse):
-    def __init__(self, semi_major):
-        semi_minor = semi_major
-        self.radius = semi_minor
-        super().__init__(semi_major, semi_minor)
+    def __init__(self, a):
+        b = a
+        self.radius = b
+        super().__init__(a, b)
 
 
 my_ellipse = Ellipse(4, 3)
